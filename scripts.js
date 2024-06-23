@@ -45,13 +45,18 @@ document.addEventListener('DOMContentLoaded', () => {
     let verificationCode;
 
     sendCodeBtn.onclick = () => {
-        verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
-        alert(`Ваш код подтверждения: ${verificationCode}`);
-        codeLabel.style.display = 'block';
-        registerCode.style.display = 'block';
-        passwordLabel.style.display = 'block';
-        registerPassword.style.display = 'block';
-        registerSubmit.style.display = 'block';
+        const email = registerEmail.value;
+        if (localStorage.getItem(email)) {
+            alert('Эта электронная почта уже зарегистрирована.');
+        } else {
+            verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
+            alert(`Ваш код подтверждения: ${verificationCode}`);
+            codeLabel.style.display = 'block';
+            registerCode.style.display = 'block';
+            passwordLabel.style.display = 'block';
+            registerPassword.style.display = 'block';
+            registerSubmit.style.display = 'block';
+        }
     };
 
     registerForm.onsubmit = (event) => {
@@ -61,8 +66,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const nickname = registerNickname.value;
             const password = registerPassword.value;
             localStorage.setItem(email, JSON.stringify({ nickname, password }));
-            alert('Регистрация прошла успешно!');
+            alert('Регистрация успешна!');
             registerModal.style.display = 'none';
+            registerBtn.style.display = 'none';
+            loginBtn.style.display = 'none';
+            const userNickname = document.createElement('p');
+            userNickname.textContent = nickname;
+            document.querySelector('nav').appendChild(userNickname);
         } else {
             alert('Неверный код подтверждения.');
         }
