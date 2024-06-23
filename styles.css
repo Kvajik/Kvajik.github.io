@@ -62,6 +62,7 @@ footer {
     border-radius: 5px;
 }
 
+/* Модальные окна */
 .modal {
     display: none;
     position: fixed;
