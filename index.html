@@ -16,6 +16,7 @@
                 <li><a href="#news">Новости ОМС</a></li>
             </ul>
             <button id="register-btn">Зарегистрироваться через Электронную Почту</button>
+            <button id="login-btn">Войти</button>
         </nav>
     </header>
 
@@ -45,5 +46,41 @@
     <footer>
         <p>&copy; 2024 ОМС - Организация Мирового Совета. Все права защищены.</p>
     </footer>
+
+    <div id="register-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-register">&times;</span>
+            <h2>Регистрация</h2>
+            <form id="register-form">
+                <label for="register-email">Электронная почта:</label>
+                <input type="email" id="register-email" required>
+                <label for="register-nickname">Никнейм:</label>
+                <input type="text" id="register-nickname" required>
+                <button type="button" id="send-code-btn">Отправить код</button>
+                <label for="register-code" id="code-label" style="display:none;">Введите код:</label>
+                <input type="text" id="register-code" style="display:none;" required>
+                <label for="register-password" id="password-label" style="display:none;">Пароль:</label>
+                <input type="password" id="register-password" style="display:none;" required>
+                <button type="submit" id="register-submit" style="display:none;">Зарегистрироваться</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-login">&times;</span>
+            <h2>Войти</h2>
+            <form id="login-form">
+                <label for="login-email">Электронная почта:</label>
+                <input type="email" id="login-email" required>
+                <label for="login-password">Пароль:</label>
+                <input type="password" id="login-password" required>
+                <button type="submit">Войти</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
 </body>
 </html>
+
